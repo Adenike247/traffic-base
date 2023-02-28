@@ -1,32 +1,92 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+  <div class="main-container">
+    <div class="content">
+      <div class="header">
+        <img
+          class="background-img"
+          src="./assets/pattern-circles.svg"
+          alt="background-img"
+        />
+
+        <h2>{{ title }}</h2>
+        <p>
+          Sign-up for our 30-day trial. <br />
+          No credit card required.
+        </p>
+        <h3 class="subtopic">
+          Sign-up for our 30-day trial. No credit card required.
+        </h3>
+      </div>
+    </div>
+    <simplecard></simplecard>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<script>
+import SimpleCard from "./components/SimpleCard.vue";
+export default {
+  components: {
+    simplecard: SimpleCard,
+  },
+  data() {
+    return {
+      title: "Simple, traffic-based pricing",
+    };
+  },
+};
+</script>
+
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+  max-width: 1536px;
+  margin: 0 auto;
+  font-family: "inter";
+}
+.header {
+  padding-top: 3rem;
+}
+.main-container {
   text-align: center;
-  color: #2c3e50;
+  background: url(./assets/bg-pattern.svg) no-repeat;
+  justify-content: center;
+  align-items: center;
+}
+.subtopic {
+  display: none;
 }
 
-nav {
-  padding: 30px;
+.main-container h2 {
+  padding-top: 2rem;
+  font-size: 1.8rem;
+  color: hsl(227, 35%, 25%);
+  padding-bottom: 20px;
 }
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.main-container p {
+  font-size: 1.2rem;
+  color: hsl(225, 20%, 60%);
 }
-
-nav a.router-link-exact-active {
-  color: #42b983;
+.background-img {
+  position: absolute;
+  margin-top: 10px;
+  left: 120px;
+  height: 200px;
+}
+@media screen and (min-width: 768px) {
+  .background-img {
+    left: 40%;
+  }
+  .main-container h2 {
+    font-size: 3rem;
+  }
+  .main-container p {
+    display: none;
+  }
+  .subtopic {
+    display: block;
+    font-size: 1.4rem;
+    color: hsl(225, 20%, 60%);
+  }
 }
 </style>
